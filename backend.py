@@ -9,6 +9,12 @@ def random_ingridient(ingridient, quantity):
 
 # print(random_ingridient(fats, 5))
 
+
+def make_plate(quantity):
+    result = []
+    
+
+
 def make_menu(quantity):
     result = []
     ingridients_for_menu = []
