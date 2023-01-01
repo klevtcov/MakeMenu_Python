@@ -24,9 +24,10 @@ def make_menu(quantity):
         random_ingridient(fats, quantity),
         random_ingridient(fiber, quantity)
         ])
+    print(ingridients_for_menu)
     for i in range(quantity):
-        for k in range(3):
-            result.append(ingridients_for_menu[k][i])
+        for k in range(4):
+            result.append(ingridients_for_menu[0][k][i])
 
     return result
 
