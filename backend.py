@@ -12,7 +12,7 @@ def random_ingridient(ingridient, quantity):
 
 def make_plate(quantity):
     result = []
-    
+
 
 
 def make_menu(quantity):
@@ -25,8 +25,8 @@ def make_menu(quantity):
         random_ingridient(fiber, quantity)
         ])
     for i in range(quantity):
-        for ingridient in ingridients_for_menu:
-            result.append(ingridient[i])
+        for k in range(3):
+            result.append(ingridients_for_menu[k][i])
 
     return result
 
