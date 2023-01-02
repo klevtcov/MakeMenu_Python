@@ -12,6 +12,14 @@ def random_ingridient(ingridient, quantity):
 
 def make_plate(quantity):
     result = []
+    for i in range(quantity):
+        result.append([  
+        proteins[random.randrange(len(proteins))],        
+        carbs[random.randrange(len(carbs))],
+        fats[random.randrange(len(fats))],
+        fiber[random.randrange(len(fiber))]]
+        )
+    return result
 
 
 
@@ -31,9 +39,10 @@ def make_menu(quantity):
 
     return result
 
+print(make_plate(2))
 
 
-print(make_menu(2))
+# print(make_menu(2))
 
 
 # print(proteins[random.randrange(len(proteins))])
