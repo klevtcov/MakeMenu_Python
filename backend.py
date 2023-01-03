@@ -23,6 +23,19 @@ def make_plate(quantity):
 
 
 
+def make_uniqu_plates(quantity):
+    result = []
+    protein = random_ingridient(proteins, quantity)
+    carb = random_ingridient(carbs, quantity)
+    fat = random_ingridient(fats, quantity)
+    fiber_ing = random_ingridient(fiber, quantity)
+    for i in range(quantity):
+        result.append([protein[i], carb[i], fat[i], fiber_ing[i]])
+    return result
+
+print(make_uniqu_plates(3))
+
+
 def make_menu(quantity):
     result = []
     ingridients_for_menu = []
@@ -39,7 +52,7 @@ def make_menu(quantity):
 
     return result
 
-print(make_plate(2))
+
 
 
 # print(make_menu(2))
