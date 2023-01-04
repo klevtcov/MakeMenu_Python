@@ -33,7 +33,7 @@ def make_uniqu_plates(quantity):
         result.append([protein[i], carb[i], fat[i], fiber_ing[i]])
     return result
 
-print(make_uniqu_plates(3))
+# print(make_uniqu_plates(3))
 
 
 def make_menu(quantity):

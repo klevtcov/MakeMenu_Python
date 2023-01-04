@@ -1,5 +1,8 @@
 import telebot
+from telebot import types
 from config import token
+import backend
+import re
 
 
 
@@ -15,20 +18,72 @@ def telegram_bot(token):
                                           "Вызвать эту справку /help или /start\n")
 
 
-    def gen_markup():
-        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        pass
-
-
-
     @bot.message_handler(commands=['makemenu'])
     def make_menu(message):
-        bot.send_message(message.chat.id, "Выберите количество блюд\n\n")
+        bot.send_message(message.chat.id, "Выберите количество блюд\n\n", reply_markup=gen_markup())
 
-    # markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    # btn1 = types.KeyboardButton("👋 Поздороваться")
-    # btn2 = types.KeyboardButton("❓ Задать вопрос")
-    # markup.add(btn1, btn2)
+
+    def gen_markup():
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn_1 = types.KeyboardButton("1")
+        btn_2 = types.KeyboardButton("2")
+        markup.add(btn_1, btn_2)
+        return markup
+
+    @bot.message_handler(content_types=['text'])
+    def handle_text(message):
+        btn_rmv = telebot.types.ReplyKeyboardRemove()
+        if re.search(r"[0-5]", message.text):
+            result = backend.make_uniqu_plates(1)
+
+            bot.send_message(message.chat.id, result, reply_markup=btn_rmv)
+
+
+        # match message.text:
+        #     case "1":
+        #         backend.make_uniqu_plates(1)
+        #         bot.send_message(message.chat.id,
+        # if message.text == "1":
+        #     a = telebot.types.ReplyKeyboardRemove()
+        #     bot.send_message(message.from_user.id, 'Что', reply_markup=a)
+
+
+# match http_code:
+#     case "200":
+#         print("OK")
+#         do_something_good()
+#     case "404":
+#         print("Not Found")
+#         do_something_bad()
+#     case "418":
+#         print("I'm a teapot")
+#         make_coffee()
+#     case _:
+#         print("Code not found")
+
+
+    # @bot.callback_query_handler(func=lambda call: True)
+    # def callback_query(call):
+    #     if call.data == "1_menu":
+    #         bot.answer_callback_query(call.id, "Answer is 1")
+    #     elif call.data == "2_menu":
+    #         bot.answer_callback_query(call.id, "Answer is 2")
+
+
+    # @bot.message_handler(content_types=['text'])
+    # def handle_text(message):
+    #     if message.text == "Wunderlist":
+    #         a = telebot.types.ReplyKeyboardRemove()
+    #         bot.send_message(message.from_user.id, 'Что', reply_markup=a)
+
+
+    # @bot.message_handler(commands=['start'])
+    # def start(message):
+        # markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        # btn1 = types.KeyboardButton("👋 Поздороваться")
+        # btn2 = types.KeyboardButton("❓ Задать вопрос")
+        # markup.add(btn1, btn2)
+        # bot.send_message(message.chat.id, text="Привет", reply_markup=markup)
 
 
     # def gen_markup():
