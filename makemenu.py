@@ -41,16 +41,16 @@ def telegram_bot(token):
             number_of_plates = [x for x in range(int(message.text))]
 
             all_plates = backend.make_uniqu_plates(int(message.text))
-            all_plates_rows = []
-            i = 1
-            for plate in all_plates:
-                all_plates_rows.append(f"[{i}] — {plate[0]}, {plate[1]}, {plate[2]}, {plate[3]}\n\n")
-                i+=1
+            # all_plates_rows = []
+            # i = 1
+            # for plate in all_plates:
+            #     all_plates_rows.append(f"[{i}] — {plate[0]}, {plate[1]}, {plate[2]}, {plate[3]}\n\n")
+            #     i+=1
 
-            # all_plates_rows = [
-            #     f"{plate[0]}, {plate[1]}, {plate[2]}, {plate[3]}\n\n"
-            #     for plate in all_plates
-            # ]
+            all_plates_rows = [
+                f"🍲 {plate[0]}, {plate[1]}, {plate[2]}, {plate[3]}\n\n"
+                for plate in all_plates
+            ]
 
             answer_message = "Список блюд\n\n" + "".join(all_plates_rows)
         elif message.text == "Избранное 📋":
