@@ -38,11 +38,20 @@ def telegram_bot(token):
     def handle_text(message):
         # btn_rmv = telebot.types.ReplyKeyboardRemove()
         if re.search(r"[0-5]", message.text):
+            number_of_plates = [x for x in range(int(message.text))]
+
             all_plates = backend.make_uniqu_plates(int(message.text))
-            all_plates_rows = [
-                f"Белки: {plate[0]}\nУглеводы: {plate[1]}\nЖиры: {plate[2]}\nКлетчатка: {plate[3]}\n\n"
-                for plate in all_plates
-            ]
+            all_plates_rows = []
+            i = 1
+            for plate in all_plates:
+                all_plates_rows.append(f"[{i}] — {plate[0]}, {plate[1]}, {plate[2]}, {plate[3]}\n\n")
+                i+=1
+
+            # all_plates_rows = [
+            #     f"{plate[0]}, {plate[1]}, {plate[2]}, {plate[3]}\n\n"
+            #     for plate in all_plates
+            # ]
+
             answer_message = "Список блюд\n\n" + "".join(all_plates_rows)
         elif message.text == "Избранное 📋":
             answer_message = "Избранное в разработке"
