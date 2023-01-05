@@ -27,21 +27,27 @@ def telegram_bot(token):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btn_1 = types.KeyboardButton("1")
         btn_2 = types.KeyboardButton("2")
-        markup.add(btn_1, btn_2)
+        btn_3 = types.KeyboardButton("3")
+        btn_4 = types.KeyboardButton("4")
+        btn_5 = types.KeyboardButton("5")
+        btn_favorites = types.KeyboardButton("Избранное")
+        markup.add(btn_1, btn_2, btn_3, btn_4, btn_5, btn_favorites)
         return markup
 
     @bot.message_handler(content_types=['text'])
     def handle_text(message):
-        btn_rmv = telebot.types.ReplyKeyboardRemove()
+        # btn_rmv = telebot.types.ReplyKeyboardRemove()
         if re.search(r"[0-5]", message.text):
-            all_plates = backend.make_uniqu_plates(1)
+            all_plates = backend.make_uniqu_plates(int(message.text))
             all_plates_rows = [
-                f"Белки: {plate[0]}\nУглеводы: {plate[1]}\nЖиры: {plate[2]}\nКлетчатка: {plate[3]}\n"
+                f"Белки: {plate[0]}\nУглеводы: {plate[1]}\nЖиры: {plate[2]}\nКлетчатка: {plate[3]}\n\n"
                 for plate in all_plates
             ]
             answer_message = "Список блюд\n\n" + "".join(all_plates_rows)
-        bot.send_message(message.chat.id, answer_message, reply_markup=btn_rmv)
-
+        elif message.text == "Избранное":
+            answer_message = "Избранное в разработке"
+        # bot.send_message(message.chat.id, answer_message, reply_markup=btn_rmv)
+        bot.send_message(message.chat.id, answer_message)
 
         # all_expenses = partypart.show_all(message.chat.id)
         # all_expenses_rows = [
