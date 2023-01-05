@@ -30,7 +30,7 @@ def telegram_bot(token):
         btn_3 = types.KeyboardButton("3")
         btn_4 = types.KeyboardButton("4")
         btn_5 = types.KeyboardButton("5")
-        btn_favorites = types.KeyboardButton("Избранное")
+        btn_favorites = types.KeyboardButton("Избранное 📋")
         markup.add(btn_1, btn_2, btn_3, btn_4, btn_5, btn_favorites)
         return markup
 
@@ -44,7 +44,7 @@ def telegram_bot(token):
                 for plate in all_plates
             ]
             answer_message = "Список блюд\n\n" + "".join(all_plates_rows)
-        elif message.text == "Избранное":
+        elif message.text == "Избранное 📋":
             answer_message = "Избранное в разработке"
         # bot.send_message(message.chat.id, answer_message, reply_markup=btn_rmv)
         bot.send_message(message.chat.id, answer_message)
