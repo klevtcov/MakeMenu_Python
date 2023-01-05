@@ -34,9 +34,30 @@ def telegram_bot(token):
     def handle_text(message):
         btn_rmv = telebot.types.ReplyKeyboardRemove()
         if re.search(r"[0-5]", message.text):
-            result = backend.make_uniqu_plates(1)
+            all_plates = backend.make_uniqu_plates(1)
+            all_plates_rows = [
+                f"Белки: {plate[0]}\nУглеводы: {plate[1]}\nЖиры: {plate[2]}\nКлетчатка: {plate[3]}\n"
+                for plate in all_plates
+            ]
+            answer_message = "Список блюд\n\n" + "".join(all_plates_rows)
+        bot.send_message(message.chat.id, answer_message, reply_markup=btn_rmv)
 
-            bot.send_message(message.chat.id, result, reply_markup=btn_rmv)
+
+        # all_expenses = partypart.show_all(message.chat.id)
+        # all_expenses_rows = [
+        #     f"{expense.user_name} – {expense.amount}.         /del{expense.id}\n"
+        #     for expense in all_expenses
+        # ]
+        # answer_message = "Список расходов: (/del – удалить запись)\n\n" + "".join(all_expenses_rows)
+
+
+        #     all_expenses_rows = [
+        #         f"{expense.user_name} – {expense.amount}.         /admin_del{expense.id}\n"
+        #         for expense in all_expenses
+        #     ]
+        #     answer_message = "Список расходов: (/admin_del – удалить запись)\n\n" + "".join(all_expenses_rows)
+        #     bot.send_message(message.chat.id, answer_message)
+        #     bot.send_message(message.chat.id, result, reply_markup=btn_rmv)
 
 
         # match message.text:
