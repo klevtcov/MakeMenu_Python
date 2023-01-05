@@ -47,6 +47,8 @@ def telegram_bot(token):
         elif message.text == "Избранное 📋":
             answer_message = "Избранное в разработке"
         # bot.send_message(message.chat.id, answer_message, reply_markup=btn_rmv)
+        else:
+            answer_message = "Неизвестная команда. (/start - венуться в меню)\n"
         bot.send_message(message.chat.id, answer_message)
 
         # all_expenses = partypart.show_all(message.chat.id)
