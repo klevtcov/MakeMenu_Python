@@ -86,3 +86,5 @@ def make_menu(quantity):
 
 # check_db_exists()
 # check_table_exists()
+
+# CREATE TABLE "proteins" ( "id" INTEGER, "name" TEXT, "category" TEXT, "weights" INTEGER, "heiters" INTEGER, "incompatible" TEXT, PRIMARY KEY("id" AUTOINCREMENT) )
