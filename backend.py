@@ -1,5 +1,12 @@
-from ingridients import proteins, carbs, fats, fiber
+import sqlite3
 import random
+
+from ingridients import proteins, carbs, fats, fiber
+
+
+base = sqlite3.connect("makemenu.db", check_same_thread=False)
+sql = base.cursor()
+
 
 def random_ingridient(ingridient, quantity):
     result = set()
@@ -55,10 +62,27 @@ def make_menu(quantity):
 
 
 
-# print(make_menu(2))
+
+# def check_db_exists():
+#     """Проверяет наличие основной таблицы, если её нет - создаёт """
+#     sql.execute("""CREATE TABLE IF NOT EXISTS expenses (
+#                 id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                 owner_id INTEGER,
+#                 user TEXT,
+#                 expense INTEGER,
+#                 comment TEXT,
+#                 date timestamp)""")
+#     base.commit()
 
 
-# print(proteins[random.randrange(len(proteins))])
-# print(proteins[random.randrange(len(proteins))])
-# print(proteins[random.randrange(len(proteins))])
-# print(proteins[random.randrange(len(proteins))])
+# def check_table_exists():
+#     """ Проверяем наличие таблицы Юзеров, если не существует - создаём """
+#     sql.execute("""CREATE TABLE IF NOT EXISTS owners (
+#                 id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                 owner_id INTEGER,
+#                 owner_name TEXT)""")
+#     base.commit()
+
+
+# check_db_exists()
+# check_table_exists()
