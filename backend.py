@@ -62,29 +62,3 @@ def make_menu(quantity):
 
 
 
-
-# def check_db_exists():
-#     """Проверяет наличие основной таблицы, если её нет - создаёт """
-#     sql.execute("""CREATE TABLE IF NOT EXISTS expenses (
-#                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-#                 owner_id INTEGER,
-#                 user TEXT,
-#                 expense INTEGER,
-#                 comment TEXT,
-#                 date timestamp)""")
-#     base.commit()
-
-
-# def check_table_exists():
-#     """ Проверяем наличие таблицы Юзеров, если не существует - создаём """
-#     sql.execute("""CREATE TABLE IF NOT EXISTS owners (
-#                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-#                 owner_id INTEGER,
-#                 owner_name TEXT)""")
-#     base.commit()
-
-
-# check_db_exists()
-# check_table_exists()
-
-# CREATE TABLE "proteins" ( "id" INTEGER, "name" TEXT, "category" TEXT, "weights" INTEGER, "heiters" INTEGER, "incompatible" TEXT, PRIMARY KEY("id" AUTOINCREMENT) )
