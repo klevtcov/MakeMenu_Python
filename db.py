@@ -11,10 +11,10 @@ def create_ingridient_table(ingridient):
     sql.execute(f"""CREATE TABLE IF NOT EXISTS {ingridient} (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT,
-                category TEXT,
-                weights INTEGER,
-                heiters INTEGER,
-                incompatible TEXT)""")
+                category TEXT DEFAULT 'Undefined',
+                weights INTEGER DEFAULT 50,
+                heiters INTEGER DEFAULT 0,
+                incompatible TEXT DEFAULT 'Undefined')""")
     base.commit()
 
 create_ingridient_table('proteins')
@@ -23,11 +23,15 @@ create_ingridient_table('fats')
 create_ingridient_table('fiber')
 
 
-def insert_ingridients_to_table(ingridients):
-    for ingridient in ingridients:
-        print(str(ingridients))
-        # sql.execute(f'INSERT INTO {ingridients} (name) VALUES(?)', (ingridient))
-    # base.commit()   
+# def insert_ingridients_to_table(ingridients):
+#     for ingridient in ingridients:
+#         print(ingridient)
+#         # sql.execute(f'INSERT INTO proteins (name) VALUES(?)', (ingridient,))
+#         # sql.execute(f'INSERT INTO carbs (name) VALUES(?)', (ingridient,))
+#         # sql.execute(f'INSERT INTO fats (name) VALUES(?)', (ingridient,))
+#         sql.execute(f'INSERT INTO fiber (name) VALUES(?)', (ingridient,))
+#         base.commit()
 
 
-insert_ingridients_to_table(proteins)
+
+# insert_ingridients_to_table(fiber)
